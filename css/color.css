@@ -1,0 +1,43 @@
+/* styles.css */
+body {
+    background-color: #FFF5E1;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background-color: #6F4E37;
+}
+
+.container-fluid, .footer-section, .accordion, .contact-info {
+    background-color: #D4B895;
+}
+
+.contact-form, .modal-content {
+    background-color: #FFF5E1;
+}
+
+.footer-section, .faq-section {
+    background-color: #C1A783;
+}
+
+h2 {
+    color: #6F4E37;
+}
+
+.btn-primary {
+    background-color: #6F4E37;
+    border-color: #6F4E37;
+}
+
+.btn-secondary {
+    background-color: #D4B895;
+    border-color: #D4B895;
+}
+
+.navbar-nav .nav-link {
+    color: #FFF5E1;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #D4B895;
+}

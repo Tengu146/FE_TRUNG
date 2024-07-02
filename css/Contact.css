@@ -1,0 +1,48 @@
+body {
+  background-color: bisque;
+  font-family: Arial, sans-serif;
+}
+
+/* Navbar */
+.navbar .navbar-nav {
+flex-direction: row;
+align-items: center;
+}
+
+.navbar .navbar-nav .nav-item {
+margin: 0 10px;
+}
+
+.navbar .navbar-nav.ms-auto .nav-item {
+margin-left: auto;
+}
+
+/* Custom button styles */
+.navbar .btn-primary, .navbar .btn-secondary {
+margin-left: 10px;
+}
+
+/* Modal form styles */
+.modal-content .form-label {
+font-weight: bold;
+}
+
+.modal-content .form-control {
+border-radius: 0.25rem;
+}
+/* Footer */
+.footer {
+padding: 20px 0;
+}
+
+.footer a {
+color: #fff;
+}
+
+.footer .social-icons a {
+margin: 0 10px;
+}
+
+.footer .social-icons a:hover {
+color: #f0ad4e;
+}

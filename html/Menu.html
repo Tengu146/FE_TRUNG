@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monster Coffee</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/Menu.css">
+    <style>
+        /* CSS cho Giỏ hàng */
+        .cart-container {
+            position: fixed;
+            top: 20%;
+            right: 20px;
+            width: 300px;
+            max-height: 80vh;
+            background: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            display: none;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .cart-total {
+            font-weight: bold;
+            text-align: right;
+            margin-top: 15px;
+        }
+        .toggle-cart-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body style="background-color: bisque;">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: darksalmon;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Coffee 1822</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Center-aligned links -->
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Menu.html">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Contact.html">Contact</a>
+                    </li>
+                </ul>
+                <!-- Right-aligned buttons -->
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#registerModal">Đăng ký</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">Đăng nhập</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Login and Register Modals -->
+    <div class="container mt-5">
+        <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="registerModalLabel">Đăng ký</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="registerForm">
+                            <div class="mb-3">
+                                <label for="registerEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="registerEmail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="registerPassword" class="form-label">Mật khẩu</label>
+                                <input type="password" class="form-control" id="registerPassword" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="registerConfirmPassword" class="form-label">Xác nhận mật khẩu</label>
+                                <input type="password" class="form-control" id="registerConfirmPassword" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Đăng ký</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loginModalLabel">Đăng nhập</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="loginForm">
+                            <div class="mb-3">
+                                <label for="loginEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="loginEmail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="loginPassword" class="form-label">Mật khẩu</label>
+                                <input type="password" class="form-control" id="loginPassword" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Biểu ngữ ưu đãi -->
+    <div class="container mt-5">
+        <div class="deal-banner text-center">
+            <h3>Ưu Đãi Đặc Biệt</h3>
+            <p>Giảm 20% cho tất cả các đơn hàng!</p>
+            <button class="btn btn-order">Đặt Hàng Ngay</button>
+        </div>
+    </div>
+
+    <!-- Danh sách sản phẩm -->
+    <div class="container mt-5">
+        <div class="row product-list">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <img src="img/Mocha.jpg" class="me-3" alt="Mocha Recipe">
+                            <div>
+                                <h5 class="card-title mb-0">MOCHA RECIPE</h5>
+                                <p class="mb-0"><span class="price">50000</span> ₫</p>
+                                <p class="mb-0"><span class="rating">★★★★☆</span></p>
+                            </div>
+                            <button class="btn btn-outline-dark ms-auto add-to-cart" data-product="MOCHA RECIPE" data-price="50000">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <img src="img/Latte.jpg" class="me-3" alt="Vanilla Latte">
+                            <div>
+                                <h5 class="card-title mb-0">VANILLA LATTE</h5>
+                                <p class="mb-0"><span class="price">45000</span> ₫</p>
+                                <p class="mb-0"><span class="rating">★★★☆☆</span></p>
+                            </div>
+                            <button class="btn btn-outline-dark ms-auto add-to-cart" data-product="VANILLA LATTE" data-price="45000">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <img src="img/Latte.jpg" class="me-3" alt="Latte">
+                            <div>
+                                <h5 class="card-title mb-0">LATTE</h5>
+                                <p class="mb-0"><span class="price">40000</span> ₫</p>
+                                <p class="mb-0"><span class="rating">★★★☆☆</span></p>
+                            </div>
+                            <button class="btn btn-outline-dark ms-auto add-to-cart" data-product="LATTE" data-price="40000">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Giỏ hàng -->
+    <button class="btn btn-primary toggle-cart-btn" onclick="toggleCart()">Giỏ hàng</button>
+    <div class="cart-container">
+        <div class="cart-header">
+            <h5>Giỏ hàng</h5>
+            <button class="btn btn-secondary" onclick="toggleCart()">Đóng</button>
+        </div>
+        <div id="cart-items"></div>
+        <p class="cart-total">Tổng: 0 ₫</p>
+        <button class="btn btn-success" onclick="checkout()">Thanh toán</button>
+    </div>
+
+    <!-- Menu -->
+    <div class="menu-container container mt-5" style="background-color:burlywood;">
+        <div class="menu-categories">
+            <h2 class="text-center">Thực Đơn</h2>
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <button><a class="nav-link" onclick="showCategory('coffee')" href="#">Cà Phê</a></button>
+                </li>
+                <li class="nav-item">
+                    <button style="margin-left: 5px;"><a class="nav-link" onclick="showCategory('tea')" href="#">Trà</a></button>
+                </li>
+                <li class="nav-item">
+                    <button><a class="nav-link" onclick="showCategory('cakes')" href="#">Bánh Ngọt</a></button>
+                </li>
+            </ul>
+        </div>
+        <div class="menu-items mt-4">
+            <!-- Danh mục Cà Phê -->
+            <div id="coffee" class="menu-category">
+                <!-- Americano -->
+                <div class="menu-item d-flex mb-4">
+                    <img src="img/Americano.jpg" alt="Americano" class="me-3" width="100">
+                    <div>
+                        <h3>AMERICANO</h3>
+                        <p>Americano là sự kết hợp giữa cà phê espresso và nước đun sôi. Bạn có thể tuỳ thích lựa chọn độ đậm nhạt.</p>
+                        <p class="menu-item-price">46.000₫</p>
+                    </div>
+                    <button class="btn btn-outline-dark ms-auto add-to-cart" data-product="AMERICANO" data-price="46000">+</button>
+                </div>
+                <!-- Cappuccino -->
+                <div class="menu-item d-flex mb-4">
+                    <img src="img/Capuchino.jpg" alt="Cappuccino" class="me-3" width="100">
+                    <div>
+                        <h3>CAPPUCCINO</h3>
+                        <p>Cappuccino là sự kết hợp của espresso, sữa nóng và một lớp bọt sữa dày bên trên, trang trí với bột cacao hoặc quế.</p>
+                        <p class="menu-item-price">50.000₫</p>
+                    </div>
+                    <button class="btn btn-outline-dark ms-auto add-to-cart" data-product="CAPPUCCINO" data-price="50000">+</button>
+                </div>
+                <!-- Espresso -->
+                <div class="menu-item d-flex mb-4">
+                    <img src="img/Espresso.jpg" alt="Espresso" class="me-3" width="100">
+                    <div>
+                        <h3>ESPRESSO</h3>
+                        <p>Espresso là một loại cà phê đậm đà và có hương vị mạnh, được pha bằng cách ép nước nóng qua cà phê xay mịn.</p>
+                        <p class="menu-item-price">35.000₫</p>
+                    </div>
+                    <button class="btn btn-outline-dark ms-auto add-to-cart" data-product="ESPRESSO" data-price="35000">+</button>
+                </div>
+            </div>
+            <!-- Danh mục Trà -->
+            <div id="tea" class="menu-category" style="display:none;">
+                <!-- Trà Sữa -->
+                <div class="menu-item d-flex mb-4">
+                    <img src="bubble_tea.jpg" alt="Trà Sữa" class="me-3" width="100">
+                    <div>
+                        <h3>TRÀ SỮA</h3>
+                        <p>Trà sữa là sự kết hợp hoàn hảo giữa trà đen, sữa và đường. Bạn có thể thêm topping trân châu để tăng thêm hương vị.</p>
+                        <p class="menu-item-price">35.000₫</p>
+                    </div>
+                    <button class="btn btn-outline-dark ms-auto add-to-cart" data-product="TRÀ SỮA" data-price="35000">+</button>
+                </div>
+                <!-- Trà Xanh -->
+                <div class="menu-item d-flex mb-4">
+                    <img src="green_tea.jpg" alt="Trà Xanh" class="me-3" width="100">
+                    <div>
+                        <h3>TRÀ XANH</h3>
+                        <p>Trà xanh mang đến hương vị tươi mát và thanh mát, rất tốt cho sức khỏe với nhiều chất chống oxy hóa.</p>
+                        <p class="menu-item-price">30.000₫</p>
+                    </div>
+                    <button class="btn btn-outline-dark ms-auto add-to-cart" data-product="TRÀ XANH" data-price="30000">+</button>
+                </div>
+                <!-- Trà Đào -->
+                <div class="menu-item d-flex mb-4">
+                    <img src="peach_tea.jpg" alt="Trà Đào" class="me-3" width="100">
+                    <div>
+                        <h3>TRÀ ĐÀO</h3>
+                        <p>Trà đào là sự kết hợp giữa trà đen và hương vị đào tươi mát, thêm lát đào tươi giúp tăng thêm hương vị.</p>
+                        <p class="menu-item-price">35.000₫</p>
+                    </div>
+                    <button class="btn btn-outline-dark ms-auto add-to-cart" data-product="TRÀ ĐÀO" data-price="35000">+</button>
+                </div>
+            </div>
+            <!-- Danh mục Bánh Ngọt -->
+            <div id="cakes" class="menu-category" style="display:none;">
+                <!-- Bánh Tiramisu -->
+                <div class="menu-item d-flex mb-4">
+                    <img src="tiramisu.jpg" alt="Tiramisu" class="me-3" width="100">
+                    <div>
+                        <h3>TIRAMISU</h3>
+                        <p>Tiramisu là loại bánh ngọt truyền thống của Ý với lớp kem mascarpone, cà phê và cacao.</p>
+                        <p class="menu-item-price">60.000₫</p>
+                    </div>
+                    <button class="btn btn-outline-dark ms-auto add-to-cart" data-product="TIRAMISU" data-price="60000">+</button>
+                </div>
+                <!-- Bánh Mousse Chanh Leo -->
+                <div class="menu-item d-flex mb-4">
+                    <img src="passion_fruit_mousse.jpg" alt="Mousse Chanh Leo" class="me-3" width="100">
+                    <div>
+                        <h3>MOUSSE CHANH LEO</h3>
+                        <p>Bánh mousse chanh leo với hương vị chua ngọt dịu nhẹ, lớp mousse mềm mịn tan chảy trong miệng.</p>
+                        <p class="menu-item-price">45.000₫</p>
+                    </div>
+                    <button class="btn btn-outline-dark ms-auto add-to-cart" data-product="MOUSSE CHANH LEO" data-price="45000">+</button>
+                </div>
+                <!-- Bánh Brownie -->
+                <div class="menu-item d-flex mb-4">
+                    <img src="brownie.jpg" alt="Brownie" class="me-3" width="100">
+                    <div>
+                        <h3>BROWNIE</h3>
+                        <p>Bánh brownie chocolate đậm đà với kết cấu giòn bên ngoài và mềm mịn bên trong.</p>
+                        <p class="menu-item-price">40.000₫</p>
+                    </div>
+                    <button class="btn btn-outline-dark ms-auto add-to-cart" data-product="BROWNIE" data-price="40000">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer-section -->
+<section class="footer-section">
+    <div class="container text-center">
+        <h2>ĐĂNG KÝ NHẬN KHUYẾN MÃI</h2>
+        <div class="newsletter">
+            <input type="email" placeholder="Email của bạn">
+            <button>ĐĂNG KÝ</button>
+        </div>
+        <div class="row store-info">
+            <div class="col-md-6">
+                <h4>HỆ THỐNG CỬA HÀNG</h4>
+                <p>CN1: Trường ĐHDN, Phường Phú Lãm , Hà Đông , Hà Nội, Việt Nam</p>
+                <p>CN2: Tổ 7 số nhà 59 , Phường Phú Lãm , Hà Đông , Hà Nội, Việt Nam</p>
+            </div>
+            <div class="col-md-6">
+                <h4>LIÊN HỆ</h4>
+                <p>Hotline đặt hàng: 0869395576 </p>
+                <p>Email: Trung1822tn@gmail.com </p>
+                <p>Thứ 2 - Thứ 6: 7am - 10pm</p>
+                <p>Thứ 7 - Chủ nhật: 8am - 9pm</p>
+            </div>
+        </div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+  </section>
+
+    <script>
+        // Mã JavaScript để thêm vào giỏ hàng
+        const cartContainer = document.querySelector('.cart-container');
+        const cartItems = document.getElementById('cart-items');
+        const cartTotal = document.querySelector('.cart-total');
+        let cart = [];
+
+        function toggleCart() {
+            cartContainer.style.display = cartContainer.style.display === 'none' ? 'flex' : 'none';
+        }
+
+        function addToCart(product, price) {
+            const item = cart.find(i => i.product === product);
+            if (item) {
+                item.quantity++;
+            } else {
+                cart.push({ product, price, quantity: 1 });
+            }
+            renderCart();
+        }
+
+        function renderCart() {
+            cartItems.innerHTML = '';
+            let total = 0;
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                cartItems.innerHTML += `
+                    <div class="cart-item">
+                        <span>${item.product} x ${item.quantity}</span>
+                        <span>${itemTotal} ₫</span>
+                    </div>
+                `;
+            });
+            cartTotal.textContent = `Tổng: ${total} ₫`;
+        }
+
+        function checkout() {
+            alert('Chức năng thanh toán hiện chưa khả dụng.');
+        }
+
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const product = button.getAttribute('data-product');
+                const price = parseInt(button.getAttribute('data-price'), 10);
+                addToCart(product, price);
+            });
+        });
+
+        function showCategory(category) {
+            document.querySelectorAll('.menu-category').forEach(el => el.style.display = 'none');
+            document.getElementById(category).style.display = 'block';
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+      const loggedInUser = localStorage.getItem('loggedInUser');
+      const userOptions = document.getElementById('userOptions');
+      const userWelcome = document.getElementById('userWelcome');
+
+      if (loggedInUser) {
+        userOptions.style.display = 'none';
+        userWelcome.style.display = 'block';
+        userWelcome.innerHTML = `<span>Welcome, ${loggedInUser}</span> <button class="btn btn-link" onclick="logout()">Logout</button>`;
+      }
+      document.getElementById('loginForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const email = document.getElementById('loginEmail').value;
+        localStorage.setItem('loggedInUser', email);
+        alert('Login successful!');
+        window.location.reload();
+      });
+      document.getElementById('registerForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const email = document.getElementById('registerEmail').value;
+        const password = document.getElementById('registerPassword').value;
+        const confirmPassword = document.getElementById('registerConfirmPassword').value;
+
+        if (password !== confirmPassword) {
+          alert('Passwords do not match!');
+          return;
+        }
+        localStorage.setItem('loggedInUser', email);
+        alert('Registration successful!');
+        window.location.reload();
+      });
+
+    });
+    function logout() {
+      localStorage.removeItem('loggedInUser');
+      window.location.reload();
+    }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Biến để lưu tài khoản đã đăng ký
+        let registeredAccount = null;
+
+        // Xử lý sự kiện đăng ký
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+
+            if (password === confirmPassword) {
+                registeredAccount = { email, password };
+                alert('Đăng ký thành công! Tài khoản của bạn đã được tạo.');
+                $('#registerModal').modal('hide');
+
+                // Tự động đăng nhập sau khi đăng ký thành công
+                document.getElementById('loginEmail').value = email;
+                document.getElementById('loginPassword').value = password;
+                document.getElementById('loginForm').submit();
+            } else {
+                alert('Mật khẩu không khớp!');
+            }
+        });
+
+        // Xử lý sự kiện đăng nhập
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            if (registeredAccount && email === registeredAccount.email && password === registeredAccount.password) {
+                alert('Đăng nhập thành công! Bạn đã được đăng nhập.');
+                $('#loginModal').modal('hide');
+                // Hiển thị thông điệp chào mừng
+                document.getElementById('welcomeMessage').innerText = `Chào mừng ${registeredAccount.email}! Bạn đã đăng nhập thành công.`;
+                document.getElementById('welcomeMessage').classList.add('alert', 'alert-success');
+            } else {
+                alert('Email hoặc mật khẩu không đúng.');
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monster Coffee</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../css/home.css">
+    <style>
+        .navbar-nav mx-auto{
+            margin-left: 400px;
+        }
+    </style>
+</head>
+<body >
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: darksalmon;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Coffee 1822</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Center-aligned links -->
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Menu.html">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Contact.html">Contact</a>
+                    </li>
+                </ul>
+                <!-- Right-aligned buttons -->
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#registerModal">Đăng ký</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">Đăng nhập</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav> 
+    <!-- Login  -->
+    <div class="container mt-5">
+        <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="registerModalLabel">Đăng ký</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="registerForm">
+                            <div class="mb-3">
+                                <label for="registerEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="registerEmail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="registerPassword" class="form-label">Mật khẩu</label>
+                                <input type="password" class="form-control" id="registerPassword" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="registerConfirmPassword" class="form-label">Xác nhận mật khẩu</label>
+                                <input type="password" class="form-control" id="registerConfirmPassword" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Đăng ký</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loginModalLabel">Đăng nhập</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="loginForm">
+                            <div class="mb-3">
+                                <label for="loginEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="loginEmail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="loginPassword" class="form-label">Mật khẩu</label>
+                                <input type="password" class="form-control" id="loginPassword" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Deal banner -->
+    <div class="container mt-5">
+        <div class="deal-banner text-center">
+            <h3>Ưu Đãi Đặc Biệt</h3>
+            <p>Giảm 20% cho tất cả các đơn hàng!</p>
+            <button class="btn btn-order">Đặt Hàng Ngay</button>
+        </div>
+    </div>
+    <!-- List of products -->
+    <div class="container mt-5">
+        <div class="row product-list">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <img src="img/Mocha.jpg" class="me-3" alt="Mocha Recipe">
+                            <div>
+                                <h5 class="card-title mb-0">MOCHA RECIPE</h5>
+                                <p class="mb-0"><span class="price">50000</span> ₫</p>
+                                <p class="mb-0"><span class="rating">★★★★☆</span></p>
+                            </div>
+                            <button class="btn btn-outline-dark ms-auto add-to-cart" data-product="MOCHA RECIPE" data-price="50000">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <img src="img/Latte.jpg" class="me-3" alt="Vanilla Latte">
+                            <div>
+                                <h5 class="card-title mb-0">VANILLA LATTE</h5>
+                                <p class="mb-0"><span class="price">45000</span> ₫</p>
+                                <p class="mb-0"><span class="rating">★★★☆☆</span></p>
+                            </div>
+                            <button class="btn btn-outline-dark ms-auto add-to-cart" data-product="VANILLA LATTE" data-price="45000">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <img src="img/Latte.jpg" class="me-3" alt="Latte">
+                            <div>
+                                <h5 class="card-title mb-0">LATTE</h5>
+                                <p class="mb-0"><span class="price">40000</span> ₫</p>
+                                <p class="mb-0"><span class="rating">★★★☆☆</span></p>
+                            </div>
+                            <button class="btn btn-outline-dark ms-auto add-to-cart" data-product="LATTE" data-price="40000">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Profile -->
+    <div class="container content-wrapper">
+        <div class="image-section">
+            <img src="img/Product.webp" alt="Coffee and Shop">
+        </div>
+        <div class="text-section">
+            <h2> Coffee 1822 - Nơi Hòa Quyện Hương Vị và Không Gian Ấm Áp</h2>
+            <p>
+                Chào mừng đến với Coffee 1822! Tại địa chỉ  Phố Xốm, Phú Lãm, Hà Đông, chúng tôi mang đến không gian ấm cúng và cà phê thơm ngon từ 7:00 sáng đến 11:00 tối. Thưởng thức ly espresso hoặc cappuccino yêu thích của bạn trong khung cảnh thoáng đãng, hoặc thư giãn ngoài trời với một chiếc bánh ngọt tuyệt ngon. Dù bạn đến để nghỉ ngơi hay làm việc, Quán Coffee 1822 luôn là nơi lý tưởng. Hãy ghé thăm chúng tôi và trải nghiệm sự khác biệt!
+            </p>
+        </div>
+    </div>
+    <!-- Products Section -->
+    <div class="container product-section">
+        <!-- Coffee Card -->
+        <div class="product-card">
+            <img src="img/Espresso.jpg" alt="Coffee">
+            <h3>Cà phê</h3>
+            <p>Sự kết hợp hoàn hảo giữa hạt cà phê Robusta & Arabica thượng hạng, được trồng trên những vùng cao nguyên Việt Nam màu mỡ, qua những bí quyết rang đặc biệt.</p>
+        </div>
+
+        <!-- Tea Card -->
+        <div class="product-card">
+            <img src="img/tea.jpg" alt="Tea">
+            <h3>Trà</h3>
+            <p>Hương vị tự nhiên, thơm ngon của Trà Việt tại Quán Coffee 1822 sẽ giúp bạn tận hưởng cảm giác thật khoan khoái và tươi mới.</p>
+        </div>
+
+        <!-- Dessert Card -->
+        <div class="product-card">
+            <img src="img/Dessert.jpg" alt="Dessert">
+            <h3>Bánh ngọt</h3>
+            <p>Những chiếc bánh ngọt mang đậm hương vị đặc trưng, là sự kết hợp hoàn hảo với các món nước tại quán chúng tôi.</p>
+        </div>
+    </div>
+    <!-- Menu -->
+    <div class="container mt-5" style="background-color: black;">
+        <h1 class="text-center text-white">Coffee 1822 </h1>
+        <h2 class="text-center mb-5  text-white">Menu Basic </h2>
+        <div class="row">
+            <div class="col-md-6 menu-item">
+                <img src="img/Mocha.jpg" alt="Mocha Recipe" class="img-fluid">
+                <div>
+                    <h5>MOCHA RECIPE</h5>
+                    <p>Cafe Mocha là gì? Mocha là 1 loại café được tạo cho từ Espresso & nửa nóng, thêm hương vị chocolate...</p>
+                    <div class="price">49,000₫</div>
+                </div>
+            </div>
+            <div class="col-md-6 menu-item">
+                <img src="img/Latte.jpg" alt="Vanilla Latte" class="img-fluid">
+                <div>
+                    <h5>VANILLA LATTE</h5>
+                    <p>Ly cà phê sữa đậm đà thời thượng! Một chút đậm đà hơn so với Latte, Cappuccino của chúng tôi...</p>
+                    <div class="contact text-white">Liên hệ</div>
+                </div>
+            </div>
+            <div class="col-md-6 menu-item">
+                <img src="img/Latte.jpg" alt="Latte" class="img-fluid">
+                <div>
+                    <h5>LATTE</h5>
+                    <p>Ly cà phê sữa ngọt ngào đến khó quên! Với một chút nhẹ nhàng hơn so với Cappuccino, Latte của chúng tôi bắt...</p>
+                    <div class="price">49,000₫</div>
+                </div>
+            </div>
+            <div class="col-md-6 menu-item">
+                <img src="img/Americano.jpg" alt="Americano" class="img-fluid">
+                <div>
+                    <h5>AMERICANO</h5>
+                    <p>Americano là sự kết hợp giữa cà phê espresso thêm vào nước đun sôi. Bạn có thể tùy thích lựa...</p>
+                    <div class="price">46,000₫</div>
+                </div>
+            </div>
+            <div class="col-md-6 menu-item">
+                <img src="img/Espresso.jpg" alt="Iced Espresso" class="img-fluid">
+                <div>
+                    <h5>ICED ESPRESSO</h5>
+                    <p>Đích thực là ly cà phê espresso ngon đậm đà! Được chiết xuất một cách hoàn hảo từ loại cà...</p>
+                    <div class="contact text-white">Liên hệ</div>
+                </div>
+            </div>
+            <div class="col-md-6 menu-item">
+                <img src="img/Latte.jpg" alt="Caramel Latte" class="img-fluid">
+                <div>
+                    <h5>CARAMEL LATTE</h5>
+                    <p>Ly cà phê sữa ngọt ngào đến khó quên! Với một chút nhẹ nhàng hơn so với Cappuccino, Latte của chúng tôi bắt...</p>
+                    <div class="price">54,000₫</div>
+                </div>
+            </div>
+            <div class="col-md-6 menu-item">
+                <img src="img/Capuchino.jpg" alt="Cafe Cappuccino" class="img-fluid">
+                <div>
+                    <h5>CAFE CAPPUCCINO</h5>
+                    <p>Ly cà phê sữa đậm đà thời thượng! Một chút đậm đà hơn so với Latte, Cappuccino của chúng tôi...</p>
+                    <div class="price">54,000₫</div>
+                </div>
+            </div>
+            <div class="col-md-6 menu-item">
+                <img src="img/Espresso.jpg" alt="Espresso" class="img-fluid">
+                <div>
+                    <h5>ESPRESSO</h5>
+                    <p>Espresso là gì? Espresso là một loại café khá quen thuộc và được nhiều người lựa chọn vì hương vị...</p>
+                    <div class="price">59,000₫</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Recommendation -->
+    <div class="container mt-5" style="background-color: #F4A460;">
+        <h1 class="text-center"> Coffee 1822 </h1>
+        <h2 class="text-center mb-5">Đánh Giá Của Khách Hàng</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="review-item d-flex">
+                    <img src="https://via.placeholder.com/60" alt="Chị Minh Nguyệt">
+                    <div>
+                        <h5>Chị Minh Nguyệt</h5>
+                        <div class="stars">★★★★★</div>
+                        <p>Tôi rất hài lòng về thái độ phục vụ của quán, cafe đa dạng, bánh ngon và không gian rất đẹp, mình thích sống ảo nên tại đây mình có thể chụp được những tấm ảnh đẹp cùng bạn bè, để hẹn hò cũng rất lãng mạn.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="review-item d-flex">
+                    <img src="https://via.placeholder.com/60" alt="Chị Thanh Tiên">
+                    <div>
+                        <h5>Chị Thanh Tiên</h5>
+                        <div class="stars">★★★★★</div>
+                        <p>Tôi rất hài lòng về thái độ phục vụ của quán, cafe đa dạng, bánh ngon và không gian rất đẹp, mình thích sống ảo nên tại đây mình có thể chụp được những tấm ảnh đẹp cùng bạn bè, để hẹn hò cũng rất lãng mạn.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="review-item d-flex">
+                    <img src="https://via.placeholder.com/60" alt="Anh Hữu Mạnh">
+                    <div>
+                        <h5>Anh Hữu Mạnh</h5>
+                        <div class="stars">★★★★★</div>
+                        <p>Tôi rất hài lòng về thái độ phục vụ của quán, cafe đa dạng, bánh ngon và không gian rất đẹp, mình thích sống ảo nên tại đây mình có thể chụp được những tấm ảnh đẹp cùng bạn bè, để hẹn hò cũng rất lãng mạn.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Table-->
+    <div class="container text-center mt-5">
+        <div class="card  mx-auto" style="max-width: 600px; background-color:#DEB887 ;">
+            <div class="card-body">
+                <h2 class="card-title"> Coffee 1822 </h2>
+                <h4 class="card-subtitle mb-4">Thời Gian Hoạt Động</h4>
+                <p class="card-text mb-4"> Coffee 1822  là quán cà phê với những hương vị cà phê thơm ngon đặc trưng kết hợp với không gian tuyệt đẹp, âm nhạc phong phú tạo lên phong cách sang đẹp, lịch sự, gần gũi. Phong cách riêng biệt chỉ Monster mới có.</p>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h5>Thứ 2 - Thứ 6 hàng tuần</h5>
+                        <p>7am - 11am</p>
+                        <p>11am - 10pm</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <h5>Thứ 7 - Chủ nhật hàng tuần</h5>
+                        <p>8am - 11am</p>
+                        <p>11am - 9pm</p>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <h5>Hotline đặt hàng</h5>
+                    <p class="hotline">0869395576 | 0816017785</p>
+                    <button class="btn btn-warning">
+                        <a href="Menu.html">Đặt Hàng Ngay</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- News -->
+    <div class="container text-center mt-5" style="background-color: #FFEBCD;">
+        <h2 class="header-title"> Coffee 1822 </h2>
+        <h4 class="header-subtitle">Tin Tức Mới Nhất</h4>
+        <div class="row">
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card news-card">
+                    <img src="https://via.placeholder.com/350x250" alt="News 1">
+                    <div class="news-overlay">
+                        <h5>Bạn đang có sở thích uống cà phê? tiết lộ một sự thật động trời v...</h5>
+                        <p>Hãy nói cho tôi loại cà phê mà bạn hay uống, tôi sẽ nói cho bạn biết bạn là người như thế nào. Chỉ với...</p>
+                        <a href="#">XEM TẤT CẢ</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card news-card">
+                    <img src="https://via.placeholder.com/350x250" alt="News 2">
+                    <div class="news-overlay">
+                        <h5>Bật mí 4 cách trang trí quán cafe đơn giản m...</h5>
+                        <p>Hôm nay Classic coffee sẽ chia sẻ cho bạn 4 cách thiết kế không gian nổi bật quán cà phê hoàn chỉnh, chỉ đầu tư...</p>
+                        <a href="#">XEM TẤT CẢ</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card news-card">
+                    <img src="https://via.placeholder.com/350x250" alt="News 3">
+                    <div class="news-overlay">
+                        <h5>Máy pha cà phê -  Cách lựa chọn cà phê n...</h5>
+                        <p>Việc vào quán cà phê vào buổi sáng hay hẹn hò kỉ niệm đã trở thành một lựa chọn được đông đảo người dân...</p>
+                        <a href="#">XEM TẤT CẢ</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card news-card">
+                    <img src="https://via.placeholder.com/350x250" alt="News 4">
+                    <div class="news-overlay">
+                        <h5>Phân biệt mùi vị cà phê nguyên chất thật dễ ...</h5>
+                        <p>Mỗi sáng bạn có uống cà phê trước khi đi làm? Bạn có thường tụ tập bạn bè ở quán cà phê và lắng nghe...</p>
+                        <a href="#">XEM TẤT CẢ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <div class="container">
+        <div class="text-center my-5">
+            <h2>ĐĂNG KÝ NHẬN KHUYẾN MÃI</h2>
+            <p>Đừng bỏ lỡ những sản phẩm và chương trình khuyến mãi hấp dẫn</p>
+            <form id="registerForm" class="d-flex justify-content-center">
+                <input type="email" class="form-control me-2" placeholder="Email của bạn" required>
+                <button type="submit" class="btn btn-warning">ĐĂNG KÝ</button>
+            </form>
+            <div id="successMessage" class="alert alert-success mt-3 d-none" role="alert">
+                Bạn đã đăng ký thành công!
+            </div>
+        </div>
+    </div>
+    <footer class="footer bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <img src="logo.png" alt="Monster Coffee" class="img-fluid mb-3">
+                    <p> Coffee 1822  mong rằng chúng tôi luôn mang đến cho khách hàng những trải nghiệm tốt nhất, tạo ra những khoảnh khắc khó quên khi đến với Monster.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5>HỆ THỐNG CỬA HÀNG</h5>
+                    <p>ĐC1: Số nhà 59 , Đường huyền kì tổ 7 , phường Phú Lãm , Hà Đông , Hà Nội.  </p>
+                    <p>ĐC2: Sy Bình Lâm , Kha Sơn , Phú Bình , Thái Nguyên. </p>
+                </div>
+                <div class="col-md-4">
+                    <h5>LIÊN HỆ</h5>
+                    <p>Hotline đặt hàng: 0869395576 | 0816017785 </p>
+                    <p>Email: Trungtnksz@gmail.com | trung1822tn@gmail.com </p>
+                    <p>Thứ 2 - Thứ 6: 7am - 10pm</p>
+                    <p>Thứ 7 - Chủ nhật: 8am - 9pm</p>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p>@ Bản quyền thuộc về Coffee 1822 |<a href=""> Nguyễn T.Trung </a></p>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <script>
+        // Biến để lưu tài khoản đã đăng ký
+        let registeredAccount = null;
+    
+        // Xử lý sự kiện đăng ký
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+    
+            if (password === confirmPassword) {
+                registeredAccount = { email, password };
+                alert('Đăng ký thành công! Tài khoản của bạn đã được tạo.');
+                $('#registerModal').modal('hide');
+    
+                // Tự động đăng nhập sau khi đăng ký thành công
+                document.getElementById('loginEmail').value = email;
+                document.getElementById('loginPassword').value = password;
+                document.getElementById('loginForm').submit();
+            } else {
+                alert('Mật khẩu không khớp!');
+            }
+        });
+    
+        // Xử lý sự kiện đăng nhập
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+    
+            if (registeredAccount && email === registeredAccount.email && password === registeredAccount.password) {
+                alert('Đăng nhập thành công! Bạn đã được đăng nhập.');
+                $('#loginModal').modal('hide');
+                // Hiển thị thông điệp chào mừng
+                document.getElementById('welcomeMessage').innerText = `Chào mừng ${registeredAccount.email}! Bạn đã đăng nhập thành công.`;
+                document.getElementById('welcomeMessage').classList.add('alert', 'alert-success');
+            } else {
+                alert('Email hoặc mật khẩu không đúng.');
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>/* Đăng kí ở Footer */
+        document.getElementById('registerForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            document.getElementById('successMessage').classList.remove('d-none');
+            this.reset();
+        });
+    </script>
+    
+</body>
+</html>

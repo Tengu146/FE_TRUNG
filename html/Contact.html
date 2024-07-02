@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monster Coffee Contact</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/css/Contact.css">
+    <style>
+        .contact-section {
+            background-color: #FAF4EF;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-section h2,
+        .contact-section h3 {
+            color: #8A6D3B;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .contact-section p,
+        .contact-section a {
+            color: #5C4033;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            border: 1px solid #DEB887;
+            border-radius: 5px;
+        }
+
+        .contact-form button {
+            background-color: #DEB887;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .contact-form button:hover {
+            background-color: #C79A6D;
+        }
+
+        .live-chat {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .live-chat button {
+            background-color: #DEB887;
+            border: none;
+            border-radius: 50%;
+            color: white;
+            padding: 15px;
+            font-size: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .live-chat-window {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            height: 400px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .live-chat-header {
+            background-color: #DEB887;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .live-chat-body {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+        }
+
+        .live-chat-footer {
+            display: flex;
+            border-top: 1px solid #DEB887;
+        }
+
+        .live-chat-footer input {
+            flex: 1;
+            border: none;
+            padding: 10px;
+            border-radius: 0;
+        }
+
+        .live-chat-footer button {
+            background-color: #DEB887;
+            border: none;
+            padding: 10px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: darksalmon;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Coffee 1822</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Center-aligned links -->
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Menu.html">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Contact.html">Contact</a>
+                    </li>
+                </ul>
+                <!-- Right-aligned buttons -->
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#registerModal">Đăng ký</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#loginModal">Đăng nhập</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav> 
+    <!-- Login  -->
+    <div class="container mt-5">
+        <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="registerModalLabel">Đăng ký</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="registerForm">
+                            <div class="mb-3">
+                                <label for="registerEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="registerEmail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="registerPassword" class="form-label">Mật khẩu</label>
+                                <input type="password" class="form-control" id="registerPassword" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="registerConfirmPassword" class="form-label">Xác nhận mật khẩu</label>
+                                <input type="password" class="form-control" id="registerConfirmPassword" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Đăng ký</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loginModalLabel">Đăng nhập</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="loginForm">
+                            <div class="mb-3">
+                                <label for="loginEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="loginEmail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="loginPassword" class="form-label">Mật khẩu</label>
+                                <input type="password" class="form-control" id="loginPassword" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact-->
+    <div class="container my-5">
+        <div class="contact-section">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>LIÊN HỆ</h3>
+                    <p><i class="fas fa-phone-alt"></i> Hotline đặt hàng: 0869395576 | 0816017785</p>
+                    <p><i class="fas fa-envelope"></i> Email: Trungtnksz@gmail.com | trung1822tn@gmail.com</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>THỜI GIAN</h3>
+                    <p>Thứ 2 - Thứ 6: 7am - 10pm</p>
+                    <p>Thứ 7 - Chủ nhật: 8am - 9pm</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>ĐỊA CHỈ</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> ĐC1: Số nhà 59 , Đường huyền kì tổ 7 , phường Phú Lãm , Hà Đông , Hà Nội.</p>
+                    <p><i class="fas fa-map-marker-alt"></i> ĐC2: Sy Bình Lâm , Kha Sơn , Phú Bình , Thái Nguyên.</p>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <h2> Coffee 1822 </h2>
+                <h3>LIÊN HỆ VỚI CHÚNG TÔI</h3>
+            </div>
+            <form class="contact-form">
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Họ và tên" required>
+                </div>
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" placeholder="Số điện thoại" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="email" class="form-control" placeholder="Email" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <textarea class="form-control" rows="4" placeholder="Nội dung" required></textarea>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">GỬI THÔNG TIN</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Live Chat -->
+    <div class="live-chat">
+        <button id="chatButton"><i class="fas fa-comments"></i> Chat với chúng tôi</button>
+    </div>
+    <div class="live-chat-window" id="chatWindow">
+        <div class="live-chat-header">
+            Chat với chúng tôi
+        </div>
+        <div class="live-chat-body" id="chatBody">
+            <!-- Chat messages will go here -->
+        </div>
+        <div class="live-chat-footer">
+            <input type="text" id="chatInput" placeholder="Nhập tin nhắn...">
+            <button id="sendButton">Gửi</button>
+        </div>
+    </div>
+    <!-- Footer -->
+    <div class="container">
+        <div class="text-center my-5">
+            <h2>ĐĂNG KÝ NHẬN KHUYẾN MÃI</h2>
+            <p>Đừng bỏ lỡ những sản phẩm và chương trình khuyến mãi hấp dẫn</p>
+            <form id="registerForm" class="d-flex justify-content-center">
+                <input type="email" class="form-control me-2" placeholder="Email của bạn" required>
+                <button type="submit" class="btn btn-warning">ĐĂNG KÝ</button>
+            </form>
+            <div id="successMessage" class="alert alert-success mt-3 d-none" role="alert">
+                Bạn đã đăng ký thành công!
+            </div>
+        </div>
+    </div>
+    <footer class="footer bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <img src="logo.png" alt="Monster Coffee" class="img-fluid mb-3">
+                    <p> Coffee 1822  mong rằng chúng tôi luôn mang đến cho khách hàng những trải nghiệm tốt nhất, tạo ra những khoảnh khắc khó quên khi đến với Monster.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5>HỆ THỐNG CỬA HÀNG</h5>
+                    <p>ĐC1: Số nhà 59 , Đường huyền kì tổ 7 , phường Phú Lãm , Hà Đông , Hà Nội.  </p>
+                    <p>ĐC2: Sy Bình Lâm , Kha Sơn , Phú Bình , Thái Nguyên. </p>
+                </div>
+                <div class="col-md-4">
+                    <h5>LIÊN HỆ</h5>
+                    <p>Hotline đặt hàng: 0869395576 | 0816017785 </p>
+                    <p>Email: Trungtnksz@gmail.com | trung1822tn@gmail.com </p>
+                    <p>Thứ 2 - Thứ 6: 7am - 10pm</p>
+                    <p>Thứ 7 - Chủ nhật: 8am - 9pm</p>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p>@ Bản quyền thuộc về Coffee 1822 |<a href=""> Nguyễn T.Trung </a></p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script>
+        // Lưu tài khoản đã đăng ký
+        let registeredAccount = null;
+    
+        // Xử lý đăng ký
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+    
+            if (password === confirmPassword) {
+                registeredAccount = { email, password };
+                alert('Đăng ký thành công! Tài khoản của bạn đã được tạo.');
+                $('#registerModal').modal('hide');
+    
+                // Tự động đăng nhập sau khi đăng ký thành công
+                document.getElementById('loginEmail').value = email;
+                document.getElementById('loginPassword').value = password;
+                document.getElementById('loginForm').submit();
+            } else {
+                alert('Mật khẩu không khớp!');
+            }
+        });
+    
+        // Xử lý đăng nhập
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+    
+            if (registeredAccount && email === registeredAccount.email && password === registeredAccount.password) {
+                alert('Đăng nhập thành công! Bạn đã được đăng nhập.');
+                $('#loginModal').modal('hide');
+                // Hiển thị thông điệp chào mừng
+                document.getElementById('welcomeMessage').innerText = `Chào mừng ${registeredAccount.email}! Bạn đã đăng nhập thành công.`;
+                document.getElementById('welcomeMessage').classList.add('alert', 'alert-success');
+            } else {
+                alert('Email hoặc mật khẩu không đúng.');
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Đăng kí ở Footer 
+        document.getElementById('registerForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            document.getElementById('successMessage').classList.remove('d-none');
+            this.reset();
+        });
+    </script>
+    <script>
+        // Live chat 
+        const chatButton = document.getElementById('chatButton');
+        const chatWindow = document.getElementById('chatWindow');
+        const sendButton = document.getElementById('sendButton');
+        const chatInput = document.getElementById('chatInput');
+        const chatBody = document.getElementById('chatBody');
+
+        chatButton.addEventListener('click', () => {
+            chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        sendButton.addEventListener('click', () => {
+            const message = chatInput.value.trim();
+            if (message) {
+                const messageElement = document.createElement('div');
+                messageElement.textContent = message;
+                chatBody.appendChild(messageElement);
+                chatInput.value = '';
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }
+        });
+
+        chatInput.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                sendButton.click();
+            }
+        });
+    </script>
+</body>
+
+</html>
